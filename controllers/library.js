@@ -40,6 +40,47 @@ exports.postLibrary = (req, res) => {
       })
   });
 }
+exports.viewImage = (req, res) => {
+  gfs .files.findOne({ filename: req.params.filename }, (err, file) => {
+    // Check if file
+    if (!file || file.length === 0) {
+      return res.status(404).json({
+        err: 'No file exists'
+      });
+    }
+
+    // Check if image
+    if (file.contentType === 'image/jpeg' || file.contentType === 'image/png') {
+      // Read output to browser
+      const readstream = gfs.createReadStream(file.filename);
+      readstream.pipe(res);
+    } else {
+      res.status(404).json({
+        err: 'Not an image'
+      });
+    }
+  });
+}
+exports.view = (req, res) => {
+  console.log(req.params.filename);
+  gfs.files.find({filename: req.params.filename}, (err, file) => { 
+    // Check if files
+    if (!file || file.length === 0) {
+        console.log('no')
+    } else {
+        if (
+          file.contentType === 'image/jpeg' ||
+          file.contentType === 'image/png'
+        ) {
+          file.isImage = true;
+        } else {
+          file.isImage = false;
+        }
+        console.log(file);
+
+    }
+  });
+}
 exports.download = (req, res) => {
   /**
    * @params /:id
@@ -48,27 +89,29 @@ exports.download = (req, res) => {
    * Grab the reference number
    * gfs.findOne() and send response back to server
 */
-
   User.find({}, 'files', (err, files) => {
     files.forEach(function(value, index, array) {
-        var found = value.files.find(function(el) {
-          return el.shortid === req.params.id;
-        });
-        console.log(found);
-      }); 
-            gfs.files.findOne({id: found.id}, (err, file) => {
-              if(err) return console.log(err);
-                if(!file || file.length == 0) {
-                  return res.status(404).json({
-                    err: 'No File Exists'
-                  });
-                }
-                  res.set('Content-Type', file.contentType);
-                  res.set('Content-Disposition', 'attachment; filename="' + file.filename + '"');
-                    const readstream = gfs.createReadStream(file.filename);
-                    readstream.pipe(res);
+        value.files.forEach(function(v, i, a) {
+                if(v.filename == req.params.id) {
+                  console.log(v);
+                  gfs.files.findOne({filename: req.params.id}, (err, file) => {
+                    if(err) return console.log(err);
+                      if(!file || file.length == 0) {
+                        return res.status(404).json({
+                          err: 'No File Exists'
+                        });
+                      }
+                        res.set('Content-Type', file.contentType);
+                        res.set('Content-Disposition', 'attachment; filename="' + file.filename + '"');
+                          const readstream = gfs.createReadStream(file.filename);
+                          readstream.pipe(res);
 
-            })
+                  })
+                } 
+        })
+      
+      }); 
+
   })
   
 
