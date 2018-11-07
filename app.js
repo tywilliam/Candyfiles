@@ -26,7 +26,7 @@ const methodOverride = require('method-override');
 const shortid = require('shortid');
 const User = require('./models/User');
 //  * Load environment variables from .env file, where API keys and passwords are configured.
-//  
+//
 dotenv.load({ path: '.env.example' });
 
 const conn = mongoose.createConnection(process.env.MONGODB_URI);
@@ -163,13 +163,13 @@ app.use('/webfonts', express.static(path.join(__dirname, 'node_modules/@fortawes
  */
 app.get('/', homeController.index);
 app.get('/library', libraryController.library);
-app.get('/f/:id', libraryController.download);
+app.get('/f/:filename', libraryController.download);
 app.post('/library',upload.single('file'), libraryController.postLibrary);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
-app.get('/f/:id', libraryController.download);
-app.get('/v/image/:filename', libraryController.viewImage);
+app.get('/f/:filename', libraryController.download);
+app.get('/image/:filename', libraryController.viewImage);
 app.get('/v/:filename', libraryController.view);
 app.get('/forgot', userController.getForgot);
 app.post('/forgot', userController.postForgot);
@@ -188,7 +188,7 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 
 /**
  * POST /upload
- * 
+ *
  */
 
 

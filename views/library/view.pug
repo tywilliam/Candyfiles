@@ -1,14 +1,15 @@
 extends ../layout
 
 block content
-        if viewfile
-
-                    img.ui.large.centered.image(src=`/v/image/`+viewfile.filename)
-                    .ui.header 
-                        | #{viewfile.originalname}
+        if vfilename 
+                .ui.container
+                    img.ui.large.centered.image(src=`/image/`+vfilename)
+                    .ui.header
+                            | #{vfile.originalname}
                     .ui.segments
                         .ui.segment.center.aligned.red
-                            p Download
+                              a(href=`/f/`+vfilename) 
+                                    | Download
                         .ui.segment.center.aligned.red
                             p Share
                         .ui.segment.center.aligned.green
@@ -17,6 +18,6 @@ block content
 
 
         else
-                img.ui.small.image(src=`https://via.placeholder.com/300.png/09f/fff`)   
+                img.ui.small.image(src=`https://via.placeholder.com/300.png/09f/fff`)
         script.
             console.log(#{viewfile});

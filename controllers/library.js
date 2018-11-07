@@ -5,7 +5,7 @@ const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const path = require('path');
 const User = require('../models/User');
-  
+
 const conn = mongoose.createConnection(process.env.MONGODB_URI);
 // Init gfs
 let gfs;
@@ -40,8 +40,13 @@ exports.postLibrary = (req, res) => {
       })
   });
 }
+// We're getting the filename on /v/image in img element
+// and retrieveing the stream image
 exports.viewImage = (req, res) => {
-  gfs .files.findOne({ filename: req.params.filename }, (err, file) => {
+  /*
+    Display that specific image
+    */
+  gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
     // Check if file
     if (!file || file.length === 0) {
       return res.status(404).json({
@@ -61,29 +66,23 @@ exports.viewImage = (req, res) => {
     }
   });
 }
+// Display the image
 exports.view = (req, res) => {
   console.log(req.params.filename);
-  gfs.files.find({filename: req.params.filename}, (err, file) => { 
-    // Check if files
-    if (!file || file.length === 0) {
-        console.log('no')
-    } else {
-        if (
-          file.contentType === 'image/jpeg' ||
-          file.contentType === 'image/png'
-        ) {
-          file.isImage = true;
-        } else {
-          file.isImage = false;
-        }
-        console.log(file);
-
-    }
+  gfs.files.findOne({filename: req.params.filename}, (err, file) => {
+    if(err) return console.log(err);
+      if(!file || file.length == 0) {
+        return res.status(404).json({
+          err: 'No File Exists'
+        });
+      }
+      res.render('library/view', {vfile: file, vfilename: req.params.filename})
   });
+  
 }
 exports.download = (req, res) => {
   /**
-   * @params /:id
+   * @params /:filename
    * I have to make it so
    * Search for the file in each user document.files for :id
    * Grab the reference number
@@ -92,9 +91,9 @@ exports.download = (req, res) => {
   User.find({}, 'files', (err, files) => {
     files.forEach(function(value, index, array) {
         value.files.forEach(function(v, i, a) {
-                if(v.filename == req.params.id) {
+                if(v.filename == req.params.filename) {
                   console.log(v);
-                  gfs.files.findOne({filename: req.params.id}, (err, file) => {
+                  gfs.files.findOne({filename: req.params.filename}, (err, file) => {
                     if(err) return console.log(err);
                       if(!file || file.length == 0) {
                         return res.status(404).json({
@@ -107,12 +106,12 @@ exports.download = (req, res) => {
                           readstream.pipe(res);
 
                   })
-                } 
+                }
         })
-      
-      }); 
+
+      });
 
   })
-  
+
 
 }
