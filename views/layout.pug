@@ -6,10 +6,13 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(name='theme-color' content='#4DA5F4')
     meta(name='csrf-token', content=_csrf)
-    title #{title} - Hackathon Starter
+    title #{title} - DevLoad
     link(rel='shortcut icon', href='/favicon.png')
-    link(rel='stylesheet', href='/css/main.css')
-
+    link(rel='stylesheet', href='/css/themes/modern/_modern.scss')
+    link(rel='stylesheet', href='/css/semantic.css')
+    link(rel='stylesheet', href='/css/style.css')
+    link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
+    link(rel='stylesheet', href='/css/dropdown.min.css')
   body
     include partials/header
 
@@ -23,6 +26,11 @@ html
     script(src='/js/lib/bootstrap.min.js')
     script(src='/js/lib/popper.min.js')
     script(src='/js/main.js')
+    script(src="js/semantic.js")
+    script(src='js/dropdown.min.js')
+    script.
+      $('.ui.dropdown').dropdown();
+      $('.ui.checkbox').checkbox();
 
     // Google Analytics: change UA-XXXXX-X to be your site's ID
     script.

@@ -7,3 +7,8 @@ exports.index = (req, res) => {
     title: 'Home'
   });
 };
+exports.library = (req, res) => {
+  res.render('library', {
+    title: 'Library'
+  });
+};

@@ -4,7 +4,7 @@ block content
   .pb-2.mt-2.mb-4.border-bottom
     h3 Contact Form
 
-  form(method='POST')
+  form.ui.form(method='POST')
     input(type='hidden', name='_csrf', value=_csrf)
     if (unknownUser)
       .form-group.row

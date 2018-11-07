@@ -1,0 +1,40 @@
+extends layout
+
+block content
+    .ui.grid.container
+        .eight.wide.column
+
+            .ui.celled.list
+                    each file in files
+                        .item
+                                .header
+                                    a(href="/")
+                                        | #{file.originalname} #{file.id}
+                                .content
+                                    |  #{file.size}  #{file.mimetype}
+                                .ui.action.mini.input
+                                    - var url = 'pug-test.html #{file}'
+                                                a.link(href=`http://localhost:8080/f/`+file.id)
+                                                        |   Download&nbsp;&nbsp;
+                                                a.link(href=`http://localhost:8080/v/`+file.id)
+                                                        |   View
+                                                a.link(href=`http://localhost:8080/s/`+file.id)
+                                                        | Share
+        .eight.wide.column
+            form.ui.form(action="http://localhost:8080/library" method='POST' enctype="multipart/form-data")
+                .ui.mini.input
+                    input(type="file" name="file")
+                    input(type='hidden', name='_csrf', value=_csrf)
+                    button.tiny.ui.button(type="submit" value="Submit")
+                        | Submit
+                style(type='text/css').
+                    a.link{
+                        padding:0px 9px;
+                        font-size:12.5px;
+                    }
+                    a.link:hover{
+                        color:black;
+                    }
+                    a.link:nth-child(1):hover{
+                        color:purple;
+                    }
