@@ -1,12 +1,12 @@
 {
-  "name": "hackathon-starter",
+  "name": "DevLoad",
   "version": "5.1.1",
-  "description": "A boilerplate for Node.js web applications",
+  "description": "DevLoad",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sahat/hackathon-starter.git"
+    "url": "https://github.com/tywilliam/DevLoad"
   },
-  "author": "Sahat Yalkabov",
+  "author": "Tyrese Williams",
   "license": "MIT",
   "scripts": {
     "postinstall": "npm rebuild node-sass",
