@@ -93,7 +93,7 @@ exports.download = (req, res) => {
         value.files.forEach(function(v, i, a) {
                 if(v.filename == req.params.filename) {
                   console.log(v);
-                  gfs.files.findOne({filename: req.params.filename}, (err, file) => {
+                  gfs.files.findOne({shortid: req.params.filename}, (err, file) => {
                     if(err) return console.log(err);
                       if(!file || file.length == 0) {
                         return res.status(404).json({
