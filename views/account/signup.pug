@@ -1,21 +1,23 @@
 extends ../layout
 
 block content
-  .ui.grid.container
-    .eight.wide.column
-      h3 Sign up
-      form.ui.form(id='signup-form', method='POST')
-        input(type='hidden', name='_csrf', value=_csrf)
-        .field
-          label Email
-            input(type='email', name='email', id='email', placeholder='Email', autofocus, autocomplete='email', required)
-        .field
-          label Password
-            input(type='password', name='password', id='password', placeholder='Password', autocomplete='new-password', required)
-        .field
-          label Confirm Password
-            input(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password', autocomplete='new-password', required)
-        .field
-          button.ui.button(type='submit')
-            i.fas.fa-user-plus.fa-sm
-            | Signup
+  .ui.grid.container.center
+    .ui.one.column.stackable.center.aligned.page.grid
+      .column.twelve.wide
+
+        h3 Sign up
+        form.ui.form(id='signup-form', method='POST')
+          input(type='hidden', name='_csrf', value=_csrf)
+          .field
+            label Email
+              input(type='email', name='email', id='email', placeholder='Email', autofocus, autocomplete='email', required)
+          .field
+            label Password
+              input(type='password', name='password', id='password', placeholder='Password', autocomplete='new-password', required)
+          .field
+            label Confirm Password
+              input(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password', autocomplete='new-password', required)
+          .field
+            button.ui.button(type='submit')
+
+              img(src='/_PNG/basic_paperplane.png')

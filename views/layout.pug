@@ -13,8 +13,11 @@ html
     link(rel='stylesheet', href='/css/style.css')
     link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
     link(rel='stylesheet', href='/css/dropdown.min.css')
-  body
-    include partials/header
+    meta(charset="utf-8")
+    meta(content="PPType" name="Tyrese Williams")
+    meta(content="#ffffff" name="theme-color")
+    if user
+      include partials/header
 
     .container
       include partials/flash

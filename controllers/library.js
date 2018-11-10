@@ -17,15 +17,11 @@ conn.once('open', () => {
 });
 
 exports.library = (req, res) => {
-  if(req.user) {
-
+  console.log(req.user.files);
     res.render('library', {
         title: 'Library',
         files: req.user.files
     });
-  } else {
-    res.redirect('/')
-  }
 
 };
 
@@ -43,6 +39,8 @@ exports.postLibrary = (req, res) => {
 // We're getting the filename on /v/image in img element
 // and retrieveing the stream image
 exports.viewImage = (req, res) => {
+  console.log(req.params);
+
   /*
     Display that specific image
     */
@@ -68,6 +66,8 @@ exports.viewImage = (req, res) => {
 }
 // Display the image
 exports.view = (req, res) => {
+  console.log(req.params);
+
   console.log(req.params.filename);
   gfs.files.findOne({filename: req.params.filename}, (err, file) => {
     if(err) return console.log(err);
@@ -91,6 +91,9 @@ exports.download = (req, res) => {
   User.find({}, 'files', (err, files) => {
     files.forEach(function(value, index, array) {
         value.files.forEach(function(v, i, a) {
+                if(!req.params.filename) {
+                  console.log(filename);
+                }
                 if(v.filename == req.params.filename) {
                   console.log(v);
                   gfs.files.findOne({shortid: req.params.filename}, (err, file) => {

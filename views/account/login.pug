@@ -2,7 +2,7 @@ extends ../layout
 
 block content
   .ui.grid.container
-    .eight.wide.column
+    .twelve.wide.column
       form(method='POST').ui.form
           .field
             label Email
@@ -12,4 +12,5 @@ block content
             label Password
             input(type="password" name="password" id='password' placeholder="Password")
           button.ui.button(type="submit") Submit
+          br
           a.btn.btn-link(href='/forgot') Forgot your password?

@@ -1,0 +1,143 @@
+
+block content
+    link(href="../../static/dist/semantic-ui/semantic.min.css" rel="stylesheet" type="text/css")
+    link(href="../../static/stylesheets/default.css" rel="stylesheet" type="text/css")
+    link(href="../../static/stylesheets/pandoc-code-highlight.css" rel="stylesheet" type="text/css")
+    script(src="../../static/dist/jquery/jquery.min.js")
+    link(href="/css/flat.css", rel='stylesheet')
+    title DevLoad
+    .ui.vertical.primary.sidebar.menu
+      a.active.item Home
+        //-   a.item Plans
+      a.item Login
+      a.item Signup
+    .pusher
+      .ui.masthead.center.aligned.segment
+        .ui.container
+          .ui.large.secondary.pointing.menu
+            a.toc.item
+              i.sidebar.icon
+            a.active.item Home
+            //- a.item Plans
+            .right.item
+              a.ui.secondary.button(href='/login') Log in
+              a.ui.secondary.button(href='/signup') Sign Up
+        .ui.text.container
+            h1.ui.header
+              | dev.upload
+            h2.texti
+              | upload single files and get them when you need them.
+            a.ui.huge.secondary.button(href='/signup')
+              | Get Started
+              i.right.arrow.icon
+    
+
+    .ui.inverted.vertical.footer.segment
+            .ui.container
+                    .ui.stackable.inverted.divided.equal.height.stackable.grid
+                        .seven.wide.column
+                                h4.ui.inverted.header
+                                    | Copyright (c) DevLoad
+                                    p
+                                        | Extra space for a call to action inside the footer that could help re-engage users.
+            script(src="../../static/dist/semantic-ui/semantic.min.js")
+            style(type="text/css").
+                .hidden.menu {
+                display: none;
+                }
+                .masthead.segment {
+                min-height: 600px;
+                padding: 1em 0em;
+                }
+                .masthead .logo.item img {
+                margin-right: 1em;
+                }
+                .masthead .ui.menu .ui.button {
+                margin-left: 0.5em;
+                }
+                .masthead h1.ui.header {
+                margin-top: 2em;
+                margin-bottom: 0em;
+                font-size: 4em;
+                font-weight: normal;
+                }
+                .masthead h2 {
+                font-size: 1.7em;
+                font-weight: normal;
+                }
+                .ui.vertical.stripe {
+                padding: 8em 0em;
+                }
+                .ui.vertical.stripe h3 {
+                font-size: 2em;
+                }
+                .ui.vertical.stripe .button + h3,
+                .ui.vertical.stripe p + h3 {
+                margin-top: 3em;
+                }
+                .ui.vertical.stripe .floated.image {
+                clear: both;
+                }
+                .ui.vertical.stripe p {
+                font-size: 1.33em;
+                }
+                .ui.vertical.stripe .horizontal.divider {
+                margin: 3em 0em;
+                }
+                .quote.stripe.segment {
+                padding: 0em;
+                }
+                .quote.stripe.segment .grid .column {
+                padding-top: 5em;
+                padding-bottom: 5em;
+                }
+                .footer.segment {
+                padding: 5em 0em;
+                }
+                .secondary.pointing.menu .toc.item {
+                display: none;
+                }
+                @media only screen and (max-width: 700px) {
+                .ui.fixed.menu {
+                display: none !important;
+                }
+                .secondary.pointing.menu .item,
+                .secondary.pointing.menu .menu {
+                display: none;
+                }
+                .secondary.pointing.menu .toc.item {
+                display: block;
+                }
+                .masthead.segment {
+                min-height: 350px;
+                }
+                .masthead h1.ui.header {
+                font-size: 2em;
+                margin-top: 1.5em;
+                }
+                .masthead h2 {
+                margin-top: 0.5em;
+                font-size: 1.5em;
+                }
+                }
+            script.
+                $(document)
+                    .ready(function() {
+                // fix menu when passed
+                $('.masthead')
+                .visibility({
+                once: false,
+                onBottomPassed: function() {
+                $('.fixed.menu').transition('fade in');
+                },
+                onBottomPassedReverse: function() {
+                $('.fixed.menu').transition('fade out');
+                }
+                })
+                ;
+                // create sidebar and attach to menu open
+                $('.ui.sidebar')
+                .sidebar('attach events', '.toc.item')
+                ;
+                })
+                ;

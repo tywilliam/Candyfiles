@@ -1,12 +1,10 @@
-.ui.huge.menu
+.ui.huge.menu.fluid
           if !user
             a.item(href='/login') Login
             a.item(href='/signup') Signup
             a.item(href="/") Home
           else
             a.item(href='/library') Library
-            .item
-              a.ui.button(href="/library") | Upload
             .ui.pointing.dropdown.link.item
                 span
                   if user.profile.picture

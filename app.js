@@ -141,8 +141,9 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   // After successful login, redirect back to the intended page
   if (!req.user
-    && req.path !== '/login'
+    && req.path !== '/'
     && req.path !== '/signup'
+    && req.path !== '/login'
     && !req.path.match(/^\/auth/)
     && !req.path.match(/\./)) {
     req.session.returnTo = req.originalUrl;
@@ -168,11 +169,14 @@ app.post('/library',upload.single('file'), libraryController.postLibrary);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
+
 app.get('/f/:filename', libraryController.download);
+
 app.get('/image/:filename', libraryController.viewImage);
 app.get('/v/:filename', libraryController.view);
 app.get('/forgot', userController.getForgot);
 app.post('/forgot', userController.postForgot);
+app.get('/flat', homeController.flat);
 app.get('/reset/:token', userController.getReset);
 app.post('/reset/:token', userController.postReset);
 app.get('/signup', userController.getSignup);
