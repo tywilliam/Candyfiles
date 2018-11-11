@@ -18,11 +18,14 @@ conn.once('open', () => {
 });
 
 exports.library = (req, res) => {
-
+  if(req.user.files) {
     res.render('library', {
         title: 'Library',
         files: req.user.files
     });
+  } else {
+    res.render('library');
+  }
 
 };
 
