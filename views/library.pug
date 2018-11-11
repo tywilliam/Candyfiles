@@ -28,7 +28,7 @@ block content
                             .item
                                     .header
                                         if file
-                                            | #{file.originalname} 
+                                            | #{file.originalname}
                                         else
                                             | No Name
                                     .content
@@ -36,14 +36,15 @@ block content
                                             |  Size: #{file.size}  Type: #{file.mimetype}
                                         else
                                             | None.
+                                        if file.shortid
+                                            | URL: #{file.shortid}
                                     .ui.action.mini.input
-                                                if file
-                                                    a.ui.secondary.mini.button(href=`http://localhost:8080/f/`+file.filename)
+                                                if file.shortid && file.filename
+                                                    a.ui.secondary.mini.button(href=`http://localhost:8080/f/`+file.shortid)
                                                             |   Download&nbsp;&nbsp;
-                                                    a.link(href=`http://localhost:8080/v/`+file.filename)
+                                                    a.link(href=`http://localhost:8080/v/`+file.shortid)
                                                             |   View
                                                     a.link(href=`http://localhost:8080/s/`+file.id)
                                                             | Share
                                                 else
                                                     | No file information.
-

@@ -164,7 +164,7 @@ app.use('/webfonts', express.static(path.join(__dirname, 'node_modules/@fortawes
  */
 app.get('/', homeController.index);
 app.get('/library', libraryController.library);
-app.get('/f/:filename', libraryController.download);
+app.get('/f/:shortid', libraryController.download);
 app.post('/library',upload.single('file'), libraryController.postLibrary);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
@@ -172,8 +172,8 @@ app.get('/logout', userController.logout);
 
 app.get('/f/:filename', libraryController.download);
 
-app.get('/image/:filename', libraryController.viewImage);
-app.get('/v/:filename', libraryController.view);
+app.get('/image/:shortid', libraryController.viewImage);
+app.get('/v/:shortid', libraryController.view);
 app.get('/forgot', userController.getForgot);
 app.post('/forgot', userController.postForgot);
 app.get('/flat', homeController.flat);

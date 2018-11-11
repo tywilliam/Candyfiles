@@ -1,14 +1,15 @@
 extends ../layout
 
 block content
-        if vfilename 
+        if shortid && file
                 .ui.container
-                    img.ui.large.centered.image(src=`/image/`+vfilename)
+                    img.ui.large.centered.image(src=`/image/`+shortid)
                     .ui.header
-                            | #{vfile.originalname}
+                            h2
+                              | #{file.originalname}
                     .ui.segments
                         .ui.segment.center.aligned.red
-                              a(href=`/f/`+vfilename) 
+                              a(href=`/f/`+shortid)
                                     | Download
                         .ui.segment.center.aligned.red
                             p Share
@@ -19,5 +20,3 @@ block content
 
         else
                 img.ui.small.image(src=`https://via.placeholder.com/300.png/09f/fff`)
-        script.
-            console.log(#{viewfile});
