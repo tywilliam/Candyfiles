@@ -1,22 +1,11 @@
 extends ../layout
 
 block content
-        if shortid && file
-                .ui.container
-                    img.ui.large.centered.image(src=`/image/`+shortid)
-                    .ui.header
-                            h2
-                              | #{file.originalname}
-                    .ui.segments
-                        .ui.segment.center.aligned.red
-                              a(href=`/f/`+shortid)
-                                    | Download
-                        .ui.segment.center.aligned.red
-                            p Share
-                        .ui.segment.center.aligned.green
-                            p Copy URL
-
-
-
-        else
-                img.ui.small.image(src=`https://via.placeholder.com/300.png/09f/fff`)
+  .container
+    .row
+      .col-md-12.text-center
+          img.img-fluid.max-width(src=`/image/`+shortid)
+          br
+          br
+          a.btn.btn-info(href=`/f/`+shortid)
+                | Download

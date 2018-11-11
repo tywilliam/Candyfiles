@@ -1,16 +1,23 @@
 extends ../layout
 
 block content
-  .ui.grid.container
-    .twelve.wide.column
+  br
+  a(href='/')
+    button.btn-sm.btn.btn-info.mb-2.mt-2 👈 &nbsp;Go Back
+  hr
+  .container.mt-5
+    .col-md-12.col-xs-7.col-lg-8
+      h5.
+          👋
+          Enter your credentials to access all your files.
       form(method='POST').ui.form
-          .field
+          .form-group
             label Email
             input(type='hidden', name='_csrf', value=_csrf)
-            input(type="email" name="email" placeholder="Email")
+            input.form-control(type="email" name="email" placeholder="Email")
           .field
             label Password
-            input(type="password" name="password" id='password' placeholder="Password")
-          button.ui.button(type="submit") Submit
-          br
+            input.form-control(type="password" name="password" id='password' placeholder="Password")
+            br
+          button.btn.btn-info(type="submit") Submit
           a.btn.btn-link(href='/forgot') Forgot your password?

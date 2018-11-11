@@ -1,50 +1,27 @@
 extends layout
 
 block content
-    .ui.grid.container
-
-            .twelve.wide.column
-                form.ui.form(action="http://localhost:8080/library" method='POST' enctype="multipart/form-data")
-                    .ui.mini.input
-                        input(type="file" name="file")
-                        input(type='hidden', name='_csrf', value=_csrf)
-                        button.tiny.ui.button(type="submit" value="Submit")
-                            | Submit
-                    style(type='text/css').
-                        a.link{
-                            padding:0px 9px;
-                            font-size:12.5px;
-                        }
-                        a.link:hover{
-                            color:black;
-                        }
-                        a.link:nth-child(1):hover{
-                            color:purple;
-                        }
-
-            .eight.wide.column
-                .ui.middle.aligned.selection.list
-                        each file in files
-                            .item
-                                    .header
-                                        if file
-                                            | #{file.originalname}
-                                        else
-                                            | No Name
-                                    .content
-                                        if file
-                                            |  Size: #{file.size}  Type: #{file.mimetype}
-                                        else
-                                            | None.
-                                        if file.shortid
-                                            | URL: #{file.shortid}
-                                    .ui.action.mini.input
-                                                if file.shortid && file.filename
-                                                    a.ui.secondary.mini.button(href=`http://localhost:8080/f/`+file.shortid)
-                                                            |   Download&nbsp;&nbsp;
-                                                    a.link(href=`http://localhost:8080/v/`+file.shortid)
-                                                            |   View
-                                                    a.link(href=`http://localhost:8080/s/`+file.id)
-                                                            | Share
-                                                else
-                                                    | No file information.
+  .container
+    .row.mt-5
+      .col-md-6
+        h5 Start uploading whenever
+        form(action="http://localhost:8080/library" method='POST' enctype="multipart/form-data")
+          .form-group
+            input.form-control(type="file" name="file")
+            input(type='hidden', name='_csrf', value=_csrf)
+          button.btn.btn-secondary(type="submit" value="Submit") Upload
+        br
+      .col-md-6
+        each file in files
+          .card.text-white.bg-primary.mb-3(style='max-width: 20rem;')
+            .card-header
+              h6 #{file.originalname}
+            .card-body
+              h4.card-title #{file.size} #{file.mimetype}
+              p.card-text
+                a(href=`${process.env.SITEURL}/f/`+file.shortid).btn.btn-secondary
+                  | Download&nbsp;&nbsp;
+                a(href=`${process.env.SITEURL}/v/`+file.shortid).btn.btn-info
+                  | View
+                a(href=`${process.env.SITEURL}/s/`+file.id).btn.btn-info
+                  | Share

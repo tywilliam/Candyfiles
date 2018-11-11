@@ -1,18 +1,15 @@
-.ui.huge.menu.fluid
-          if !user
-            a.item(href='/login') Login
-            a.item(href='/signup') Signup
-            a.item(href="/") Home
-          else
-            a.item(href='/library') Library
-            .ui.pointing.dropdown.link.item
-                span
-                  if user.profile.picture
-                    
-                  else
-                  
-                    span=user.profile.name || user.email || user.id
-                i.dropdown.icon
-                .menu
-                  a.item(href='/account') Account
-                  a.item(href='/logout') Logout
+if user
+
+  .container
+    ul.nav.nav-tabs
+      a.navbar-brand(href="/") Candyfiles
+      li.nav-item
+        a.nav-link(href="/library") Library
+      li.nav-item
+        a.nav-link(data-toggle='tab', href='/account') Profile
+      li.nav-item
+        a.nav-link(href='/logout') Logout
+
+    .row
+else
+  | Go back

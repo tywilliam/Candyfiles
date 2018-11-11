@@ -1,11 +1,7 @@
 extends layout
 
 block content
+  .container
 
-    .ui.grid.container
-        .eight.wide.column
-            .ui.segment
-                    if user
-                        | Hello #{user.email}
-                    else
-                        | Hello Person
+    h3 👋, Candyfiles #{user.email}
+    p
