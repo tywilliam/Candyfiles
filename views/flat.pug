@@ -6,7 +6,7 @@ block content
     script(src="../../static/dist/jquery/jquery.min.js")
     link(rel='stylesheet', href='https://bootswatch.com/4/minty/bootstrap.min.css')
     link(href="/css/flat.css", rel='stylesheet')
-    title DevLoad
+    title Candyfiles
     .ui.vertical.primary.sidebar.menu
       a.active.item Home
         //-   a.item Plans
@@ -18,13 +18,12 @@ block content
           .ui.large.secondary.pointing.menu
             a.toc.item
               i.sidebar.icon
-            a.active.item Home
-            //- a.item Plans
+            a.item.btn.btn-secondary Home
             .right.item
-              a.btn.mr-1.btn-info(href='/login') Log in
-              a.btn.btn-info(href='/signup') Sign Up
-        .ui.text.container.mt-9
-            h1.display-1.jumbotron
+              a.btn.mr-1.btn-secondary(href='/login') Log in
+              a.btn.btn-secondary(href='/signup') Sign Up
+        .ui.text.container.mt-3
+            h1.display-1
               | candyfiles
             h1.lead
               | upload single files and get them when you need them.
@@ -33,14 +32,14 @@ block content
               i.right.arrow.icon
 
 
-    .ui.inverted.vertical.footer.segment
+    .ui.vertical.footer.segment.bg-dark
             .ui.container
-                    .ui.stackable.inverted.divided.equal.height.stackable.grid
+                    .ui.stackable.divided.equal.height.stackable.grid
                         .seven.wide.column
                                 h4.ui.inverted.header
-                                    | Copyright (c) DevLoad
+                                    | Copyright © Candyfiles
                                     p
-                                        | Extra space for a call to action inside the footer that could help re-engage users.
+                                        | Created with ❤️ by <a style='color:brown'href="https://github.com/tywilliam">Tyrese</a>
             script(src="../../static/dist/semantic-ui/semantic.min.js")
             style(type="text/css").
                 .hidden.menu {
