@@ -24,6 +24,8 @@ const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 const shortid = require('shortid');
+const compression = require('compression');
+
 const User = require('./models/User');
 //  * Load environment variables from .env file, where API keys and passwords are configured.
 //
@@ -154,6 +156,7 @@ app.use((req, res, next) => {
   }
   next();
 });
+app.use(compression());
 app.use('/', express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 app.use('/js/lib', express.static(path.join(__dirname, 'node_modules/popper.js/dist/umd'), { maxAge: 31557600000 }));
 app.use('/js/lib', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js'), { maxAge: 31557600000 }));
