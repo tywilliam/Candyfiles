@@ -1,6 +1,5 @@
 
 block content
-    link(href="../../static/dist/semantic-ui/semantic.min.css" rel="stylesheet" type="text/css")
     link(href="../../static/stylesheets/default.css" rel="stylesheet" type="text/css")
     link(href="../../static/stylesheets/pandoc-code-highlight.css" rel="stylesheet" type="text/css")
     script(src="../../static/dist/jquery/jquery.min.js")
@@ -8,9 +7,18 @@ block content
     link(href="/css/flat.css", rel='stylesheet')
     title Candyfiles
     style(type='text/css').
+      .pushable > .pusher {
+        min-height: 0;
+      }
       html {
         background-color:#fab1a0;
       }
+      .main--header {
+        font-size:30px;
+        width:50vw
+      }
+    link(href="../../static/dist/semantic-ui/semantic.min.css" rel="stylesheet" type="text/css")
+    link(href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" rel="stylesheet")
     .ui.vertical.primary.sidebar.menu
       a.active.item Home
         //-   a.item Plans
@@ -29,23 +37,149 @@ block content
         .ui.text.container.mt-3
             h1.display-1
               | Candyfiles
-            h1.lead
-              | Welcome to Candyfiles.
+            h1.lead.main--header
+              //- | Welcome to Candyfiles.
               br
-              | We are a file hosting application to help you store your files.
+              | We help you store your files like candy,
             a.btn.btn-secondary(href='/signup')
               | Register now
               i.right.arrow.icon
-
-
-    .ui.vertical.footer.segment.bg-dark
-            .ui.container
-                    .ui.stackable.divided.equal.height.stackable.grid
-                        .seven.wide.column
-                                h4.ui.inverted.header
-                                    | Copyright © Candyfiles
-                                    p
-                                        | Created with ❤️ by <a style='color:brown'href="https://github.com/tywilliam">Tyrese</a>
+section.pricing.py-5.bg-secondary.slideInLeft.animated
+    .container
+      .row
+        // Free Tier
+        .col-lg-4
+          .card.mb-5.mb-lg-0
+            .card-body
+              h5.card-title.text-muted.text-uppercase.text-center Free
+              h6.card-price.text-center
+                | $0
+                span.period /month
+              hr
+              ul.fa-ul
+                li
+                  span.fa-li
+                    i.fas.fa-check
+                  | Single User
+                li
+                  span.fa-li
+                    i.fas.fa-check
+                  | 40MB Storage
+                li
+                  span.fa-li
+                    i.fas.fa-check
+                  | Unlimited Public Projects
+                li
+                  span.fa-li
+                    i.fas.fa-check
+                  | Community Access
+                li.text-muted
+                  span.fa-li
+                    i.fas.fa-times
+                  | Unlimited Private Projects
+                li.text-muted
+                  span.fa-li
+                    i.fas.fa-times
+                  | Dedicated Phone Support
+                li.text-muted
+                  span.fa-li
+                    i.fas.fa-times
+                  | Free Subdomain
+                li.text-muted
+                  span.fa-li
+                    i.fas.fa-times
+                  | Monthly Status Reports
+              a.btn.btn-block.btn-primary.text-uppercase(href='#') Button
+        // Plus Tier
+        .col-lg-4
+          .card.mb-5.mb-lg-0
+            .card-body
+              h5.card-title.text-muted.text-uppercase.text-center Plus
+              h6.card-price.text-center
+                | $3
+                span.period /month
+              hr
+              ul.fa-ul
+                li
+                  span.fa-li
+                    i.fas.fa-check
+                  strong 5 Users
+                li
+                  span.fa-li
+                    i.fas.fa-check
+                  | 50GB Storage
+                li
+                  span.fa-li
+                    i.fas.fa-check
+                  | Unlimited Public Projects
+                li
+                  span.fa-li
+                    i.fas.fa-check
+                  | Community Access
+                li
+                  span.fa-li
+                    i.fas.fa-check
+                  | Unlimited Private Projects
+                li
+                  span.fa-li
+                    i.fas.fa-check
+                  | Dedicated Phone Support
+                li
+                  span.fa-li
+                    i.fas.fa-check
+                  | Free Subdomain
+                li.text-muted
+                  span.fa-li
+                    i.fas.fa-times
+                  | Monthly Status Reports
+              a.btn.btn-block.btn-primary.text-uppercase(href='#') Button
+        // Pro Tier
+        .col-lg-4
+          .card
+            .card-body
+              h5.card-title.text-muted.text-uppercase.text-center Pro
+              h6.card-price.text-center
+                | $49
+                span.period /month
+              hr
+              ul.fa-ul
+                li
+                  span.fa-li
+                    i.fas.fa-check
+                  strong Unlimited Users
+                li
+                  span.fa-li
+                    i.fas.fa-check
+                  | 150GB Storage
+                li
+                  span.fa-li
+                    i.fas.fa-check
+                  | Unlimited Public Projects
+                li
+                  span.fa-li
+                    i.fas.fa-check
+                  | Community Access
+                li
+                  span.fa-li
+                    i.fas.fa-check
+                  | Unlimited Private Projects
+                li
+                  span.fa-li
+                    i.fas.fa-check
+                  | Dedicated Phone Support
+                li
+                  span.fa-li
+                    i.fas.fa-check
+                  strong Unlimited
+                  |  Free Subdomains
+                li
+                  span.fa-li
+                    i.fas.fa-check
+                  | Monthly Status Reports
+              a.btn.btn-block.btn-primary.text-uppercase(href='#') Button
+  
+    
+                                        
             script(src="../../static/dist/semantic-ui/semantic.min.js")
             style(type="text/css").
                 .hidden.menu {
