@@ -1,0 +1,70 @@
+extends ../layout
+
+block content 
+        .container
+                .row
+                    link(href='/components/payment.css', rel='stylesheet')
+                form(action='/charge', method='POST')
+                    script.stripe-button(src='https://checkout.stripe.com/checkout.js', data-key='pk_test_3VSYWB8HlTqaYUtohpD2d1UX', data-amount='999', data-name='Comingsoon', data-description='Widget', data-image='https://stripe.com/img/documentation/checkout/marketplace.png', data-locale='auto')
+
+                    .col-xs-12.col-md-4
+                    // CREDIT CARD FORM STARTS HERE
+                    .panel.panel-default.credit-card-box
+                        .panel-heading.display-table
+                        .row.display-tr
+                            h3.panel-title.display-td Payment Details
+                            .display-td
+                            img.img-responsive.pull-right(src='http://i76.imgup.net/accepted_c22e0.png')
+                        .panel-body
+                        form#payment-form(role='form', method='POST', action='javascript:void(0);')
+                            .row
+                            .col-xs-12
+                                .form-group
+                                label(for='cardNumber') CARD NUMBER
+                                .input-group
+                                    input.form-control(type='tel', name='cardNumber', placeholder='Valid Card Number', autocomplete='cc-number', required='', autofocus='')
+                                    span.input-group-addon
+                                    i.fa.fa-credit-card
+                            .row
+                            .col-xs-7.col-md-7
+                                .form-group
+                                label(for='cardExpiry')
+                                    span.hidden-xs EXPIRATION
+                                    span.visible-xs-inline EXP
+                                    |  DATE
+                                input.form-control(type='tel', name='cardExpiry', placeholder='MM / YY', autocomplete='cc-exp', required='')
+                            .col-xs-5.col-md-5.pull-right
+                                .form-group
+                                label(for='cardCVC') CV CODE
+                                input.form-control(type='tel', name='cardCVC', placeholder='CVC', autocomplete='cc-csc', required='')
+                            .row
+                            .col-xs-12
+                                .form-group
+                                label(for='couponCode') COUPON CODE
+                                input.form-control(type='text', name='couponCode')
+                            .row
+                            .col-xs-12
+                                button.subscribe.btn.btn-success.btn-lg.btn-block(type='button') Start Subscription
+                            .row(style='display:none;')
+                            .col-xs-12
+                                p.payment-errors
+                    // CREDIT CARD FORM ENDS HERE
+                    .col-xs-12.col-md-8(style='font-size: 12pt; line-height: 2em;')
+                    //- p
+                    //- h1 Features:
+                    //- ul
+                    //-     li As-you-type, input formatting
+                    //-     li Form field validation (also as you type)
+                    //-     li Graceful error feedback for declined card, etc
+                    //-     li AJAX form submission w/ visual feedback
+                    //-     li Creates a Stripe credit card token
+                    //- p
+                    //- p Be sure to replace the dummy API key with a valid Stripe API key.
+                    //- p
+                    //-     | Built upon: Bootstrap, jQuery, 
+                    //-     a(href='http://jqueryvalidation.org/') jQuery Validation Plugin
+                    //-     | , 
+                    //-     a(href='https://github.com/stripe/jquery.payment') jQuery.payment library
+                    //-     | ,
+                    //-     |                 and 
+                    //-     a(href='https://stripe.com/docs/stripe.js') Stripe.js

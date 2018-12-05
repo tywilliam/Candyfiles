@@ -70,6 +70,7 @@ const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const contactController = require('./controllers/contact');
 const libraryController = require('./controllers/library');
+const paymentController = require('./controllers/payment');
 /**
  * API keys and Passport configuration.
  */
@@ -126,14 +127,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-app.use((req, res, next) => {
-  if (req.path === '/upload' || req.path === '/library') {
-    next();
-  } else {
-    lusca.csrf()(req, res, next);
-  }
-});
-
 app.use(lusca.xframe('SAMEORIGIN'));
 app.use(lusca.xssProtection(true));
 app.disable('x-powered-by');
@@ -167,6 +160,8 @@ app.use('/webfonts', express.static(path.join(__dirname, 'node_modules/@fortawes
  * Primary app routes.
  */
 app.get('/', homeController.index);
+app.get('/payment/info/:plan?', paymentController.info);
+app.post('/payment/charge', paymentController.payment);
 app.get('/library', libraryController.library);
 app.get('/f/:shortid', libraryController.download);
 app.post('/library',upload.single('file'), libraryController.postLibrary);

@@ -1,11 +1,14 @@
 extends ../layout
 
 block content
-  .container(style='background-color:white;')
+  .container(style='background-color:pink;')
     .row
-      .col-md-12.text-center
+      .col-md-6.text-center
+          h3 CandyFiles Download is Below
           img#imgg.img-fluid.max-width(src=`/image/`+shortid)
           br
           br
-          a.btn.btn-info(href=`/f/`+shortid)
+          a.btn.btn-danger(href=`/f/`+shortid, style="width:400px;")
                 | Download
+      .col-md-6 
+          p Click to download
