@@ -1,4 +1,4 @@
-![CandyFiles Demo](http://candyfiles.herokuapp.com/image/F7q4ulikB)
+![CandyFiles Demo](https://candyfiles.co/image/F7q4ulikB)
 
 # Candy fILES
 
