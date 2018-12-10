@@ -1,12 +1,13 @@
-![CandyFiles Demo](https://candyfiles.co/image/F7q4ulikB)
+![CandyFiles Demo](http://candyfiles.herokuapp.com/image/F7q4ulikB)
 
-# Candy fILES
+# CandyFiles
 
-A gentle file manager application
+A file manager application.
 
-## Getting Started
 
- 1. Clone
- 2. npm install
- 3. Set SITEURL environment variable and PORT
- 4. npm start
+# Install & Get Started
+1. Clone
+
+2. npm install
+3. Set the "SITEURL" environment variable to run it on your machine
+4. npm start
