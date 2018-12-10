@@ -17,11 +17,23 @@ block content
         font-size:30px;
         width:50vw
       }
+      .stripe-button {
+        color:red;
+      }
+      @media only screen and (min-width: 430px) {
+        .card-price {
+            font-size:1.3em;
+            color:blue;
+        }
+        .card {
+          
+          width:820px;
+        }
+      }
     link(href="../../static/dist/semantic-ui/semantic.min.css" rel="stylesheet" type="text/css")
     link(href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" rel="stylesheet")
     .ui.vertical.primary.sidebar.menu
       a.active.item Home
-        //-   a.item Plans
       a.item Login
       a.item Signup
     .pusher
@@ -33,27 +45,67 @@ block content
             a.item.btn.btn-secondary Home
             .right.item
               a.btn.mr-1.btn-secondary(href='/login') Log in
-              a.btn.btn-secondary(href='/signup') Sign Up
-        .ui.text.container.mt-3
-            h1.display-1
+              //- a.btn.btn-secondary(href='/signup') Sign Up
+              a.btn.btn-secondary.ml-2(href='/signup') Free Trial
+        .ui.text.container.mt-3(style='padding-bottom:150px;')
+            h1.display-1.mx-auto
               | Candyfiles
-            h1.lead.main--header
-              //- | Welcome to Candyfiles.
+            h1.lead.main--header.m-auto.mx-auto(style='font-size:2.3em')
+              | Funify / entertain your workflow.
               br
-              | We help you store your files like candy,
-            a.btn.btn-secondary(href='/signup')
+              br
+            a.btn.btn-secondary(href='/signup', style='padding:15px 15px; font-size:1.8em;')
               | Register now
               i.right.arrow.icon
+
+.row.col-md-12
+section.pricing.py-5.bg-secondary.center.align-content-md-center
+    .container
+      .row.animated.slideInRight
+        // Free Tier
+        .col-lg-12.col-xs-8.col-sm-12.align-content-center
+          .card.mb-5.mb-lg-0.m-auto.align-content-center
+            .card-body
+              h5.card-title.text-muted.text-uppercase.text-center No Ads
+              h6.card-price.text-center
+                  | A professional, ad-free experience. whether you're an avid collector, independent professional photographer or a large Fourtune 500 company, CandyFiles can do it. 
+              hr
+              
+section.pricing.py-5.bg-secondary.center.align-content-md-center.col-md-12
+    .container
+      .row.animated.slideInLeft
+        // Free Tier
+      .col-lg-12.col-xs-8.col-sm-12.align-content-center
+          .card.mb-5.mb-lg-0.m-auto.align-content-center
+            .card-body
+              h5.card-title.text-muted.text-uppercase.text-center Direct download link to files. 
+              h6.card-price.text-center
+                |  Download directly from your own website or blog. High resolution images in your own media players.
+
+              hr
+           
+section.pricing.py-5.bg-secondary.slideInLeft.animated.center.align-content-md-center
+    .container
+      .row.animated.bounceInUp
+        // Free Tier
+      .col-lg-12.col-xs-8.col-sm-12.align-content-center
+          .card.mb-5.mb-lg-0.m-auto.align-content-center
+            .card-body
+              h5.card-title.text-muted.text-uppercase.text-center Access from anywhere.
+              h6.card-price.text-center
+               | Access your files around the world.You can be in another location. You can have another device and you can still access your files.
+              hr
+                                
 section.pricing.py-5.bg-secondary.slideInLeft.animated.center.align-content-md-center
     .container
       .row
         // Free Tier
-        .col-lg-4
-          .card.mb-5.mb-lg-0
+      .col-lg-12.col-xs-8.col-sm-12.align-content-center
+          .card.mb-5.mb-lg-0.m-auto.align-content-center
             .card-body
-              h5.card-title.text-muted.text-uppercase.text-center Free
+              h5.card-title.text-muted.text-uppercase.text-center Handles all of your file needs
               h6.card-price.text-center
-                | $5
+                | File storage made easy - and entertaining. <br> Funify your workflow.
                 span.period /month
               hr
               ul.fa-ul
@@ -68,6 +120,6 @@ section.pricing.py-5.bg-secondary.slideInLeft.animated.center.align-content-md-c
                 li
                   span.fa-li
                     i.fas.fa-check
-                  | Unlimited Uploads
+                  | Unlimited Uploads                  
               form(action="/payment/charge" method="POST").m-auto
-                script.stripe-button(src="https://checkout.stripe.com/checkout.js" data-zip-code="true" data-key="pk_test_3VSYWB8HlTqaYUtohpD2d1UX" data-amount="500" data-name="Comingsoon" data-description="Widget" data-image="/images/candy.jpeg" data-locale="auto")
+                script.stripe-button.stri(src="https://checkout.stripe.com/checkout.js" data-zip-code="true" data-key="pk_test_3VSYWB8HlTqaYUtohpD2d1UX" data-amount="500" data-name="Comingsoon" data-description="Widget" data-image="/images/candy.jpeg" data-locale="auto")
