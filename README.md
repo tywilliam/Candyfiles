@@ -2,7 +2,7 @@
 
 # CandyFiles
 
-A file manager application.
+A file manager application. Share URLS and download files with a user system.
 
 
 # Install & Get Started
